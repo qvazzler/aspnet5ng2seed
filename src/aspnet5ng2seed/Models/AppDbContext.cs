@@ -10,7 +10,7 @@ namespace aspnet5ng2seed.Models
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(
-                @"Server=(localdb)\ProjectsV13;Database=aspnet5ng2seed;Trusted_Connection=true;MultipleActiveResultSets=true;");
+                @"Server=(LocalDB)\MSSQLLocalDB;Database=aspnet5ng2seed;Trusted_Connection=true;MultipleActiveResultSets=true;");
             base.OnConfiguring(optionsBuilder);
         }
     }
