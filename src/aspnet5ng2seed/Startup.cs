@@ -55,6 +55,9 @@ namespace aspnet5ng2seed
                     template: "{controller}/{action}/{id?}");
             });
 
+            //Error: "A network-related or instance-specific error occurred while establishing a connection to SQL Server."
+            //Meaning: Your connection string in AppDbContext.cs was incorrect. If you're using LocalDb from SQL 2014, you may try (LocalDB)\MSSQLLocalDB
+
             seeder.EnsureSeedData().Wait();
         }
 

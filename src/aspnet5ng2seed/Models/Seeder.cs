@@ -20,6 +20,8 @@ namespace aspnet5ng2seed.Models
             _userManager = userManager;
         }
 
+
+
         public async Task EnsureSeedData()
         {
             if (!_context.Users.Any())
