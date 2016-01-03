@@ -1,4 +1,4 @@
-﻿/// <binding AfterBuild='libs' Clean='clean' />
+﻿/// <binding BeforeBuild='copyfiles' AfterBuild='libs' Clean='clean' />
 
 var gulp = require('gulp');
 var rimraf = require('rimraf');
@@ -23,6 +23,13 @@ gulp.task('rxjs', function () {
 
 gulp.task('libs', ['rxjs'], function () {
     return gulp.src(libs).pipe(gulp.dest(paths.lib));
+});
+
+//Copy: scripts/partials -> wwwroot/app/partials
+gulp.task('copyfiles', function () {
+    gulp.src('./scripts/Partials/*.html')
+    //gulp.src('./scripts/Partials/*.{html}')
+    .pipe(gulp.dest('./wwwroot/app/Partials'));
 });
 
 gulp.task('clean', function (callback) {

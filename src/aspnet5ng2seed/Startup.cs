@@ -16,13 +16,14 @@ namespace aspnet5ng2seed
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services
-                .AddMvc()
-                .AddJsonOptions(options =>
-                {
-                    options.SerializerSettings.ContractResolver =
-                    new CamelCasePropertyNamesContractResolver();
-                });
+            services.AddMvc();
+            //services
+            //    .AddMvc()
+            //    .AddJsonOptions(options =>
+            //    {
+            //        options.SerializerSettings.ContractResolver =
+            //        new CamelCasePropertyNamesContractResolver();
+                //});
 
             services.AddEntityFramework()
                 .AddSqlServer()
@@ -44,15 +45,24 @@ namespace aspnet5ng2seed
         {
             app.UseIISPlatformHandler();
 
-            app.UseDefaultFiles();
+            //Only if we use a raw index.html?
+            //app.UseDefaultFiles();
+
             app.UseStaticFiles();
 
             app.UseIdentity();
-            app.UseMvc(config =>
-            {
-                config.MapRoute(
-                    name: "Default",
-                    template: "{controller}/{action}/{id?}");
+            //app.UseMvc(config =>
+            //{
+            //    config.MapRoute(
+            //        name: "Default",
+            //        template: "{controller=Home}/{action=Index}/{id?}");
+            //});
+
+            app.UseMvc(m => {
+                m.MapRoute(
+                    name: "default",
+                    template: "{controller}/{action}/{id?}",
+                    defaults: new { controller = "Home", action = "Index" });
             });
 
             //Error: "A network-related or instance-specific error occurred while establishing a connection to SQL Server."
